@@ -8,6 +8,7 @@ const cors = require("cors");
 const app = express();
 const path = require("path");
 
+app.get("/", (req, res) => res.send("OK"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
@@ -150,9 +151,10 @@ async function start() {
   // Background refresh every 5 minutes
   setInterval(refreshCache, CACHE_TTL);
 
-  app.listen(process.env.PORT || 3000, () => {
+  const port = process.env.PORT || 3000;
+  app.listen(port, "0.0.0.0", () => {
     console.log(
-      `Server running on http://localhost:${process.env.PORT || 3000}`,
+      `Server running on http://localhost:${port}`,
     );
   });
 }
