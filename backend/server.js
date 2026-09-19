@@ -8,7 +8,7 @@ const cors = require("cors");
 const app = express();
 const path = require("path");
 
-app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 const apiId = Number(process.env.TELEGRAM_API_ID);
